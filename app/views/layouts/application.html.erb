@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pictory</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <p><%= alert %></p>
+    <p><%= notice %></p>
+
+    <% if logged? %>
+      <p>bienvenido! <strong><%= current_user.name %></strong></p>
+      <p><%= link_to "Desconectar", session_path(current_user), method: :delete %></p>
+    <% else %>
+      <p><%= link_to "Inicia sesión", users_sign_in_path %></p>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>
